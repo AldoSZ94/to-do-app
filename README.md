@@ -1,75 +1,128 @@
-# React + TypeScript + Vite
+# ⭐ To-Do App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Aplicación web responsive de gestión de tareas desarrollada con **React y TypeScript**.
 
-Currently, two official plugins are available:
+El objetivo del proyecto fue construir una aplicación de tareas utilizando `useReducer` para administrar el estado, `useEffect` para persistir la información en `localStorage` y **Zod** para validar los datos almacenados antes de utilizarlos.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+## 📌 Descripción
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Este proyecto consiste en una aplicación de lista de tareas que permite agregar, completar y eliminar tareas de forma sencilla.
 
-## Expanding the ESLint configuration
+La aplicación utiliza un `useReducer` para centralizar la lógica relacionada con el estado de las tareas y mantener las diferentes acciones organizadas.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Las tareas se almacenan automáticamente en `localStorage`, permitiendo conservar la información incluso después de recargar la página.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+Para garantizar que los datos recuperados desde `localStorage` tengan la estructura esperada, se implementaron esquemas de validación utilizando **Zod**.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+Además, la aplicación muestra información sobre el progreso de las tareas, incluyendo el número de tareas completadas, pendientes y el porcentaje de progreso mediante una barra visual.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+La interfaz fue construida utilizando **Tailwind CSS** y componentes de **shadcn/ui**, buscando mantener una estructura limpia, reutilizable y responsive.
 
-```
+---
 
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
+## 🚀 Demo
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+👉 Demo pendiente.
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+---
 
-```
+## 🛠️ Tecnologías utilizadas
+
+- React
+- TypeScript
+- Tailwind CSS
+- shadcn/ui
+- Zod
+- Lucide React
+- localStorage
+
+---
+
+## 🎯 Características principales
+
+- 📝 Agregar nuevas tareas
+- ⌨️ Agregar tareas presionando la tecla **Enter**
+- ✅ Marcar tareas como completadas o pendientes
+- 🗑️ Eliminar tareas
+- 📊 Visualización del progreso de las tareas
+- 📈 Porcentaje de tareas completadas
+- 💾 Persistencia de datos mediante `localStorage`
+- 🔐 Validación de datos almacenados utilizando **Zod**
+- 🧠 Administración del estado mediante `useReducer`
+- 🎨 Clases condicionales según el estado de cada tarea
+- 📱 Diseño responsive
+- 🧩 Uso de componentes reutilizables mediante shadcn/ui
+
+---
+
+## 🧠 Aprendizajes
+
+Durante este proyecto reforcé conceptos importantes de **React, TypeScript y manejo de estado**, entre ellos:
+
+- Manejo de estado local con `useState`
+- Administración de estados complejos utilizando `useReducer`
+- Creación y tipado de acciones para un reducer mediante TypeScript
+- Implementación de funciones puras para actualizar el estado
+- Uso de `useEffect` para sincronizar el estado de React con `localStorage`
+- Persistencia y recuperación de información desde `localStorage`
+- Validación de datos en tiempo de ejecución utilizando **Zod**
+- Creación de esquemas con `z.object()` y validación mediante `safeParse()`
+- Uso de `z.infer` y esquemas de validación como fuente de seguridad para datos externos
+- Renderizado condicional en React
+- Uso de clases condicionales dependiendo del estado de una tarea
+- Manejo de eventos de teclado y formularios
+- Uso de `map()` y `filter()` para transformar y actualizar arreglos sin modificar el estado original
+- Organización de la lógica de negocio mediante un reducer
+- Creación de interfaces con componentes de shadcn/ui
+- Uso de iconos mediante Lucide React
+- Desarrollo de interfaces responsive con Tailwind CSS
+
+---
+
+## 🔄 Manejo del estado
+
+La aplicación utiliza `useReducer` para centralizar las operaciones relacionadas con las tareas.
+
+El reducer contempla tres acciones principales:
+
+- `ADD_TODO` — agrega una nueva tarea.
+- `TOGGLE_TODO` — cambia una tarea entre completada y pendiente.
+- `DELETE_TODO` — elimina una tarea.
+
+El estado mantiene información sobre:
+
+- Lista de tareas.
+- Número total de tareas.
+- Número de tareas completadas.
+- Número de tareas pendientes.
+
+Esta estructura permite mantener la lógica de actualización del estado separada de la interfaz.
+
+---
+
+## 💾 Persistencia y validación de datos
+
+Cada vez que el estado de las tareas cambia, `useEffect` guarda la información actualizada en `localStorage`.
+
+Al iniciar la aplicación, los datos almacenados son recuperados y validados mediante **Zod** antes de incorporarse al estado de React.
+
+Esto permite comprobar que los datos almacenados mantengan la estructura esperada y evitar utilizar información inválida.
+
+Si los datos no existen o no superan la validación, la aplicación inicia con una lista de tareas vacía.
+
+---
+
+## 👨‍💻 Autor
+
+Desarrollado por **Aldo Sandoval Zepeda**
+_(Frontend Developer en formación con enfoque en desarrollo de interfaces modernas y responsivas.)_
+
+---
+
+## ⭐ Notas finales
+
+Este proyecto forma parte de mi portafolio y demuestra habilidades en desarrollo frontend utilizando React y TypeScript, manejo de estado con `useReducer`, persistencia de información con `localStorage`, validación de datos con Zod, componentes reutilizables y diseño responsive con Tailwind CSS.
+
+El proyecto también representa una práctica de organización de lógica de negocio mediante reducers y de validación de datos externos antes de utilizarlos dentro de la aplicación.
