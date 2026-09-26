@@ -33,17 +33,13 @@ La interfaz fue construida utilizando **Tailwind CSS** y componentes de **shadcn
 - React
 - TypeScript
 - Tailwind CSS
-- shadcn/ui
-- Zod
-- Lucide React
-- localStorage
+- HTML
 
 ---
 
 ## 🎯 Características principales
 
 - 📝 Agregar nuevas tareas
-- ⌨️ Agregar tareas presionando la tecla **Enter**
 - ✅ Marcar tareas como completadas o pendientes
 - 🗑️ Eliminar tareas
 - 📊 Visualización del progreso de las tareas
