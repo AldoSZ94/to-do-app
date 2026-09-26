@@ -24,7 +24,7 @@ La interfaz fue construida utilizando **Tailwind CSS** y componentes de **shadcn
 
 ## 🚀 Demo
 
-👉 Demo pendiente.
+👉 https://to-do-app-aldosz94.netlify.app/
 
 ---
 
